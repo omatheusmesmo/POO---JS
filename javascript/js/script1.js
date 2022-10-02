@@ -2,15 +2,22 @@ class Produto {
 
     constructor(){
         this.id = 1;
-        this.arrayProdutos = {};
+        this.arrayProdutos = [];
     }
 
     salvar() {
         let produto = this.lerDados();
 
-        this.validaCampo(produto);
+        if(this.validaCampo(produto)){
+            this.adicionar(produto);
+        }
         
-        console.log(produto);
+        console.log(this.arrayProdutos);
+    }
+
+    adicionar(produto) {
+        this.arrayProdutos.push(produto);
+        this.id++;
     }
 
     lerDados(){
@@ -34,6 +41,12 @@ class Produto {
             msg += 'Informe o preço do Produto \n';
         }
 
+        if (msg != ''){
+            alert(msg);
+            return false;
+        }
+
+        return true;
     }
 
     cancelar() {
